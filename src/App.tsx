@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import MarkdownTabs from "./components/Tabs";
+import "./App.css";
+import React from "react";
 
-function App() {
+const App = () => {
+  const defaultText = "# Welcome to react markdown";
+
+  const [text, setText] = React.useState(defaultText);
+
+  const onTyping = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <MarkdownTabs content={text} onChangeContent={onTyping} />
     </div>
   );
-}
+};
 
 export default App;
